@@ -1,16 +1,51 @@
-.placeholder {
-  height: 70vh;
-  margin: 10px auto;
+.chart {
+  height: 55vh;
+  margin: auto;
   width: 90%;
   display: flex;
   padding: 1rem 0.5rem 2rem;
   border-radius: 10px;
+  animation: fadeIn 1s;
 }
 
-.control-buttons {
+.controlPanel {
   margin: 10px auto;
-  width: 90%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 250px;
+  animation: fadeIn 1s;
 }
 
+.slideContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem;  
+  width: 100%;
+}
+
+.slideContainer * {
+  margin: 0.5rem;
+}
+
+.slideContainer p {
+  color: #333;
+}
+
+
+
+.bar {
+  width: 2%;
+  margin-top: auto;
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius: 0.5rem;
+	border-top-left-radius: 1rem;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

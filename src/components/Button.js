@@ -6,6 +6,7 @@ const Button = ({ type, text, runState, handleClick }) => {
 			disabled={type === 'reset' ? runState : false}
 			onClick={() => handleClick(type)}
 			className='button-38'
+			style={{ opacity: type === 'reset' && runState ? '25%' : '100%' }}
 		>
 			{text}
 		</button>

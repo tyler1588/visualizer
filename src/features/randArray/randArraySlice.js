@@ -20,7 +20,5 @@ export const randArraySlice = createSlice({
 	},
 });
 
-// Action creators are generated for each case reducer function
 export const { generateRandArray, setRandArray } = randArraySlice.actions;
-
 export default randArraySlice.reducer;
