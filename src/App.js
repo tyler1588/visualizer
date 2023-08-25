@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import Navbar from './components/Navbar';
 import './App.css';
-
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const getRandomInt = (max) => Math.floor(Math.random() * max - 5) + 5;
+	const displayBars = (numBars) => {
+		const barValues = Array.from({ length: numBars }, () => getRandomInt(100));
+		console.log(barValues);
+		return barValues.map((value, index) => (
+			<div
+				className='bar'
+				key={index}
+				style={{
+					height: `${value}%`,
+					width: '1rem',
+					backgroundColor: 'black',
+					marginTop: 'auto',
+					marginLeft: '1px',
+					marginRight: '1px',
+				}}
+			></div>
+		));
+	};
+
+	return (
+		<div className='App'>
+			<Navbar />
+			<div className='placeholder'>{displayBars(100)}</div>
+		</div>
+	);
 }
 
 export default App;
