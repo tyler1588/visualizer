@@ -3,7 +3,7 @@ import './Navbar.css';
 const Navbar = () => {
 	return (
 		<div className='topnav'>
-			<a className='active' href='/#home'>
+			<a className='active' href='/bubbleSort'>
 				Bubble Sort
 			</a>
 		</div>

@@ -1,10 +1,9 @@
 .placeholder {
-  background-color: rgb(226, 226, 226);
   height: 70vh;
   margin: 10px auto;
   width: 90%;
   display: flex;
-  padding: 10px;
+  padding: 1rem 0.5rem 2rem;
   border-radius: 10px;
 }
 
@@ -14,3 +13,4 @@
   display: flex;
   justify-content: center;
 }
+
