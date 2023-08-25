@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import DisplayBars from './components/DisplayBars';
 import ControlPanel from './components/ControlPanel';
 
-function App() {
+const App = () => {
 	return (
 		<div className='App'>
 			<Navbar />
@@ -11,6 +11,6 @@ function App() {
 			<DisplayBars />
 		</div>
 	);
-}
+};
 
 export default App;
