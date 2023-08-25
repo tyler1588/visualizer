@@ -1,12 +1,14 @@
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ runState, handleClick, handleResetClick }) => {
 	return (
 		<div className='topnav'>
-			<a className='active' href='#home'>
-				Run
+			<a onClick={() => handleClick()} className='active' href='#home'>
+				{runState === false ? 'Start' : 'Stop'}
 			</a>
-			<a href='#news'>Reset</a>
+			<a onClick={() => handleResetClick()} href='#news'>
+				Reset
+			</a>
 		</div>
 	);
 };
