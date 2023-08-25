@@ -1,13 +1,10 @@
 import './Navbar.css';
 
-const Navbar = ({ runState, handleClick, handleResetClick }) => {
+const Navbar = () => {
 	return (
 		<div className='topnav'>
-			<a onClick={() => handleClick()} className='active' href='#home'>
-				{runState === false ? 'Start' : 'Stop'}
-			</a>
-			<a onClick={() => handleResetClick()} href='#news'>
-				Reset
+			<a className='active' href='/#home'>
+				Bubble Sort
 			</a>
 		</div>
 	);

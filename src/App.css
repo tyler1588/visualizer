@@ -1,7 +1,16 @@
 .placeholder {
-  background-color: lightblue;
+  background-color: rgb(226, 226, 226);
   height: 70vh;
-  margin: 50px auto;
+  margin: 10px auto;
   width: 90%;
   display: flex;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.control-buttons {
+  margin: 10px auto;
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }

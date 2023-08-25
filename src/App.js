@@ -1,51 +1,69 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+	resetLeft,
+	incrementLeft,
+	resetRight,
+	incrementRight,
+	setRight,
+} from './features/counter/counterSlice';
+
 import Navbar from './components/Navbar';
+import Button from './components/Button';
 import './App.css';
 import { useState, useEffect, useCallback } from 'react';
 
 function App() {
+	const dispatch = useDispatch();
+	const left = useSelector((state) => state.counter.left);
+	const right = useSelector((state) => state.counter.right);
+
 	const getRandomInt = (max) => Math.floor(Math.random() * max) + 25;
 
 	const [randArray, setRandArray] = useState([]);
-	const [i, setI] = useState(0);
-	const [j, setJ] = useState(1);
 	const [runState, setRunState] = useState(false);
 
 	useEffect(() => {
 		setRandArray(Array.from({ length: 50 }, () => getRandomInt(75)));
 	}, []);
 
-	const handleClick = () => setRunState(!runState);
-	const handleResetClick = () => {
-		setRunState(false);
-		setI(0);
-		setJ(1);
-		setRandArray(Array.from({ length: 50 }, () => getRandomInt(75)));
+	const handleClick = (type) => {
+		if (type === 'toggle') {
+			setRunState(!runState);
+		} else {
+			setRunState(false);
+			dispatch(resetLeft());
+			dispatch(resetRight());
+			setRandArray(Array.from({ length: 50 }, () => getRandomInt(75)));
+		}
 	};
 
 	const bubbleSort = useCallback(() => {
 		let tempArray = randArray;
 
-		if (runState === true && i < tempArray.length - 1) {
-			if (tempArray[i] > tempArray[j]) {
-				let temp = tempArray[i];
-				tempArray[i] = tempArray[j];
-				tempArray[j] = temp;
+		if (runState && left < tempArray.length - 1) {
+			if (tempArray[left] > tempArray[right]) {
+				let temp = tempArray[left];
+				tempArray[left] = tempArray[right];
+				tempArray[right] = temp;
 				setRandArray(tempArray);
 			}
-			if (j === tempArray.length - 1) {
-				setI(i + 1);
-				setJ(i + 2);
+			if (right === tempArray.length - 1) {
+				dispatch(incrementLeft());
+				dispatch(setRight(left + 1));
 			} else {
-				setJ(j + 1);
+				dispatch(incrementRight());
 			}
+		} else if (runState) {
+			setRunState(false);
 		}
-	}, [i, j, randArray, runState]);
+	}, [left, right, randArray, runState, dispatch]);
 
 	useEffect(() => {
 		setTimeout(() => {
 			bubbleSort();
-		}, 10);
-	}, [i, j, randArray, bubbleSort]);
+		}, 1);
+	}, [bubbleSort]);
 
 	const displayBars = () => {
 		return randArray.map((value, index) => (
@@ -55,10 +73,12 @@ function App() {
 				style={{
 					height: `${value}%`,
 					width: '2%',
-					backgroundColor: index === i || index === j ? 'green' : 'black',
+					backgroundColor:
+						index === left || index === right ? 'green' : 'black',
 					marginTop: 'auto',
 					marginLeft: '1px',
 					marginRight: '1px',
+					borderRadius: '10px',
 				}}
 			></div>
 		));
@@ -66,12 +86,22 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Navbar
-				runState={runState}
-				handleClick={handleClick}
-				handleResetClick={handleResetClick}
-			/>
-			<div className='placeholder'>{displayBars(100)}</div>
+			<Navbar />
+			<div className='control-buttons'>
+				<Button
+					type='toggle'
+					text={runState ? 'Stop' : 'Start'}
+					runState={runState}
+					handleClick={handleClick}
+				/>
+				<Button
+					type='reset'
+					text={'Reset'}
+					runState={runState}
+					handleClick={handleClick}
+				/>
+			</div>
+			<div className='placeholder'>{displayBars()}</div>
 		</div>
 	);
 }
