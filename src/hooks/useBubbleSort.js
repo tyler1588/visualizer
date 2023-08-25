@@ -37,11 +37,13 @@ const useBubbleSort = () => {
 	const right = useSelector((state) => state.counter.right);
 	const randArray = useSelector((state) => state.randArray.value);
 	const runState = useSelector((state) => state.runState.value);
+	const speedState = useSelector((state) => state.runState.speed);
+
 	useEffect(() => {
 		setTimeout(() => {
 			bubbleSort(randArray, left, right, runState, dispatch);
-		}, 10);
-	}, [dispatch, left, right, runState, randArray]);
+		}, speedState);
+	}, [dispatch, left, right, runState, randArray, speedState]);
 	return randArray;
 };
 

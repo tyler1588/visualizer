@@ -13,21 +13,15 @@ const DisplayBars = () => {
 				key={index}
 				style={{
 					height: `${value}%`,
-					width: '2%',
 					backgroundColor:
 						index === left || index === right
 							? 'rgba(145, 180, 150, 1)'
-							: 'black',
-					marginTop: 'auto',
-					marginLeft: '1px',
-					marginRight: '1px',
-					borderTopLeftRadius: '1rem',
-					borderTopRightRadius: '0.25rem',
+							: '#333',
 				}}
 			></div>
 		));
 	};
-	return <div className='placeholder'>{display()}</div>;
+	return <div className='chart'>{display()}</div>;
 };
 
 export default DisplayBars;

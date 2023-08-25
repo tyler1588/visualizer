@@ -1,11 +1,12 @@
 
-/* CSS */
+/* Source: https://getcssscan.com/css-buttons-examples */
+
 .button-38 {
-  background-color: #FFFFFF;
+  background-color: #333;
   border: 0;
   border-radius: .5rem;
   box-sizing: border-box;
-  color: #111827;
+  color: rgba(145, 180, 150, 1);
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: .875rem;
   font-weight: 600;
@@ -19,11 +20,13 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin: 1rem;  
+  margin: 0.5rem 1rem 0rem;  
+  width: 100%;
 }
 
-.button-38:hover {
-  background-color: rgb(249,250,251);
+.button-38:hover:enabled {
+  background-color: rgba(145, 180, 150, 1);
+  color: #333;
 }
 
 .button-38:focus {

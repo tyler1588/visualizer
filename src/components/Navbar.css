@@ -1,3 +1,5 @@
+/* Source: https://www.w3schools.com/howto/howto_js_topnav.asp */
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;
@@ -7,7 +9,7 @@
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: #e21d1d;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -23,5 +25,5 @@
 /* Add a color to the active/current link */
 .topnav a.active {
   background-color: rgba(145, 180, 150, 1);
-  color: white;
+  color: rgb(0, 0, 0);
 }
