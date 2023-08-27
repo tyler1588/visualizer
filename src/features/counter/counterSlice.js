@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	left: 0,
 	right: 1,
+	swapCount: 0,
 };
 
 export const counterSlice = createSlice({
@@ -24,6 +25,12 @@ export const counterSlice = createSlice({
 		resetRight: (state) => {
 			state.right = 1;
 		},
+		incrementSwapCount: (state) => {
+			state.swapCount += 1;
+		},
+		resetSwapCount: (state) => {
+			state.swapCount = 0;
+		},
 	},
 });
 
@@ -33,5 +40,7 @@ export const {
 	incrementRight,
 	resetRight,
 	setRight,
+	incrementSwapCount,
+	resetSwapCount,
 } = counterSlice.actions;
 export default counterSlice.reducer;

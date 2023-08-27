@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { resetLeft, resetRight } from '../features/counter/counterSlice';
+import {
+	resetLeft,
+	resetRight,
+	resetSwapCount,
+} from '../features/counter/counterSlice';
 import { generateRandArray } from '../features/randArray/randArraySlice';
 import { setFalse, alternate } from '../features/runState/runStateSlice';
 import { setSpeed, resetSpeed } from '../features/runState/runStateSlice';
@@ -23,6 +27,7 @@ const ControlPanel = () => {
 			dispatch(resetRight());
 			dispatch(generateRandArray());
 			dispatch(resetSpeed());
+			dispatch(resetSwapCount());
 		}
 	};
 
