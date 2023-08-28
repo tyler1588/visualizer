@@ -3,23 +3,32 @@ import {
 	resetLeft,
 	resetRight,
 	resetSwapCount,
-	resetMin
+	resetMin,
 } from '../features/counter/counterSlice';
 import { generateRandArray } from '../features/randArray/randArraySlice';
-import { setFalse, alternate, setAlgorithm } from '../features/runState/runStateSlice';
+import {
+	setFalse,
+	alternate,
+	setAlgorithm,
+} from '../features/runState/runStateSlice';
 import { setSpeed, resetSpeed } from '../features/runState/runStateSlice';
 import './Slider.css';
 import Button from './Button';
 
-const ControlPanel = ( {algorithm}) => {
+const ControlPanel = ({ algorithm }) => {
 	const dispatch = useDispatch();
 
 	const runState = useSelector((state) => state.runState.value);
 	const speedState = useSelector((state) => state.runState.speed);
 
+	const displayHeader = {
+		bubbleSort: 'Bubble Sort',
+		selectionSort: 'Selection Sort',
+	};
+
 	const handleClick = (type) => {
 		if (type === 'toggle') {
-			dispatch(setAlgorithm(algorithm))
+			dispatch(setAlgorithm(algorithm));
 			dispatch(alternate());
 		} else {
 			dispatch(setFalse());
@@ -28,12 +37,13 @@ const ControlPanel = ( {algorithm}) => {
 			dispatch(generateRandArray());
 			dispatch(resetSpeed());
 			dispatch(resetSwapCount());
-        	dispatch(resetMin());
+			dispatch(resetMin());
 		}
 	};
 
 	return (
 		<div className='controlPanel'>
+			<h1>{displayHeader[algorithm]}</h1>
 			<Button
 				type='toggle'
 				text={runState ? 'Pause' : 'Start'}
