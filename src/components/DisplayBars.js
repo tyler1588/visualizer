@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import useBubbleSort from '../hooks/useBubbleSort';
+import useReset from '../hooks/useReset';
 
 const DisplayBars = () => {
 	const left = useSelector((state) => state.counter.left);
 	const right = useSelector((state) => state.counter.right);
-	const randArray = useBubbleSort();
+	const randArray = useSelector((state) => state.randArray.value);
+	useReset()
 
 	const display = () => {
 		return randArray.map((value, index) => (
@@ -21,7 +22,9 @@ const DisplayBars = () => {
 			></div>
 		));
 	};
-	return <div className='chart'>{display()}</div>;
+
+	return (
+	<div className='chart'>{display()}</div>)
 };
 
 export default DisplayBars;
