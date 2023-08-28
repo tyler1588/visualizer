@@ -3,16 +3,15 @@ import {
 	resetLeft,
 	resetRight,
 	resetSwapCount,
+	resetMin
 } from '../features/counter/counterSlice';
 import { generateRandArray } from '../features/randArray/randArraySlice';
-import { setFalse, alternate } from '../features/runState/runStateSlice';
+import { setFalse, alternate, setAlgorithm } from '../features/runState/runStateSlice';
 import { setSpeed, resetSpeed } from '../features/runState/runStateSlice';
-
 import './Slider.css';
-
 import Button from './Button';
 
-const ControlPanel = () => {
+const ControlPanel = ( {algorithm}) => {
 	const dispatch = useDispatch();
 
 	const runState = useSelector((state) => state.runState.value);
@@ -20,6 +19,7 @@ const ControlPanel = () => {
 
 	const handleClick = (type) => {
 		if (type === 'toggle') {
+			dispatch(setAlgorithm(algorithm))
 			dispatch(alternate());
 		} else {
 			dispatch(setFalse());
@@ -28,6 +28,7 @@ const ControlPanel = () => {
 			dispatch(generateRandArray());
 			dispatch(resetSpeed());
 			dispatch(resetSwapCount());
+        	dispatch(resetMin());
 		}
 	};
 

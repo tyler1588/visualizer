@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	value: false,
 	speed: 0,
+	algorithm: ''
 };
 
 export const runStateSlice = createSlice({
@@ -21,9 +22,15 @@ export const runStateSlice = createSlice({
 		resetSpeed: (state) => {
 			state.speed = 0;
 		},
+		setAlgorithm: (state, action) => {
+			state.algorithm = action.payload
+		},
+		resetAlgorithm: (state) => {
+			state.algorithm = ''
+		}
 	},
 });
 
-export const { setFalse, alternate, setSpeed, resetSpeed } =
+export const { setFalse, alternate, setSpeed, resetSpeed, setAlgorithm, resetAlgorithm } =
 	runStateSlice.actions;
 export default runStateSlice.reducer;

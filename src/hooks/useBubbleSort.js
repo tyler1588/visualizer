@@ -12,15 +12,20 @@ import { setFalse } from '../features/runState/runStateSlice';
 
 import { useEffect } from 'react';
 
+const swap = (tempArray, left, right, dispatch) => {
+	const temp = tempArray[left];
+	tempArray[left] = tempArray[right];
+	tempArray[right] = temp;
+	dispatch(setRandArray(tempArray));
+
+}
+
 const bubbleSort = (randArray, left, right, runState, swapCount, dispatch) => {
 	let tempArray = randArray.slice();
 
 	if (runState && right < tempArray.length - swapCount) {
 		if (tempArray[left] > tempArray[right]) {
-			const temp = tempArray[left];
-			tempArray[left] = tempArray[right];
-			tempArray[right] = temp;
-			dispatch(setRandArray(tempArray));
+			swap(tempArray, left, right, dispatch)
 		}
 		if (right === tempArray.length - 1 - swapCount) {
 			dispatch(resetLeft());
@@ -43,13 +48,15 @@ const useBubbleSort = () => {
 	const randArray = useSelector((state) => state.randArray.value);
 	const runState = useSelector((state) => state.runState.value);
 	const speedState = useSelector((state) => state.runState.speed);
+	const algorithm = useSelector((state) => state.runState.algorithm)
 
 	useEffect(() => {
 		setTimeout(() => {
-			bubbleSort(randArray, left, right, runState, swapCount, dispatch);
+			if (algorithm === 'bubbleSort'){
+				bubbleSort(randArray, left, right, runState, swapCount, dispatch);
+			}
 		}, speedState);
-	}, [dispatch, left, right, runState, randArray, swapCount, speedState]);
-	return randArray;
+	}, [dispatch, left, right, runState, randArray, swapCount, speedState, algorithm]);
 };
 
 export default useBubbleSort;

@@ -4,6 +4,7 @@ const initialState = {
 	left: 0,
 	right: 1,
 	swapCount: 0,
+	min: 0
 };
 
 export const counterSlice = createSlice({
@@ -31,6 +32,12 @@ export const counterSlice = createSlice({
 		resetSwapCount: (state) => {
 			state.swapCount = 0;
 		},
+		setMin: (state, action) => {
+			state.min = action.payload;
+		},
+		resetMin: (state) => {
+			state.min = 0
+		}
 	},
 });
 
@@ -42,5 +49,7 @@ export const {
 	setRight,
 	incrementSwapCount,
 	resetSwapCount,
+	setMin,
+	resetMin
 } = counterSlice.actions;
 export default counterSlice.reducer;

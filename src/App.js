@@ -1,14 +1,27 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import DisplayBars from './components/DisplayBars';
-import ControlPanel from './components/ControlPanel';
+import { 
+	BrowserRouter as Router,
+	Routes,
+	Route
+} from 'react-router-dom';
+import AlgoPage from './components/AlgoPage';
+import useBubbleSort from './hooks/useBubbleSort';
+import useSelectionSort from './hooks/useSelectionSort';
 
 const App = () => {
+	useBubbleSort()
+	useSelectionSort()
 	return (
 		<div className='App'>
-			<Navbar />
-			<ControlPanel />
-			<DisplayBars />
+			<Router>
+				<Navbar />
+				<Routes>
+					<Route path='/visualizer/' element={<AlgoPage algorithm={'bubbleSort'}/>}></Route>
+					<Route path='/visualizer/bubble-sort/' element={<AlgoPage algorithm={'bubbleSort'}/>}></Route>
+					<Route path='/visualizer/selection-sort/' element={<AlgoPage algorithm={'selectionSort'}/>}></Route>
+				</Routes>
+			</Router>
 		</div>
 	);
 };
