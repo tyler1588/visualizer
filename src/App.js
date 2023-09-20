@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import {
-	BrowserRouter as Router,
+	HashRouter,
 	Routes,
 	Route,
 	Navigate,
@@ -15,7 +15,7 @@ const App = () => {
 	useSelectionSort();
 	return (
 		<div className='App'>
-			<Router>
+			<HashRouter>
 				<Navbar />
 				<Routes>
 					<Route
@@ -31,7 +31,7 @@ const App = () => {
 						element={<AlgoPage algorithm={'selectionSort'} />}
 					></Route>
 				</Routes>
-			</Router>
+			</HashRouter>
 		</div>
 	);
 };
