@@ -5,13 +5,13 @@ const Navbar = () => {
 	return (
 		<div className='topnav'>
 			<NavLink
-				to='/visualizer/bubble-sort'
+				to='/bubble-sort'
 				className={({ isActive }) => (isActive ? 'active' : 'inactive')}
 			>
 				Bubble Sort
 			</NavLink>
 			<NavLink
-				to='/visualizer/selection-sort'
+				to='/selection-sort'
 				className={({ isActive = {} }) => (isActive ? 'active' : 'inactive')}
 			>
 				Selection Sort

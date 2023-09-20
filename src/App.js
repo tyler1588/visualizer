@@ -15,19 +15,19 @@ const App = () => {
 	useSelectionSort();
 	return (
 		<div className='App'>
-			<HashRouter>
+			<HashRouter basename='/'>
 				<Navbar />
 				<Routes>
 					<Route
-						path='/visualizer/'
-						element={<Navigate to='bubble-sort/' />}
+						path='/'
+						element={<Navigate to='/bubble-sort/' />}
 					></Route>
 					<Route
-						path='/visualizer/bubble-sort/'
+						path='/bubble-sort/'
 						element={<AlgoPage algorithm={'bubbleSort'} />}
 					></Route>
 					<Route
-						path='/visualizer/selection-sort/'
+						path='/selection-sort/'
 						element={<AlgoPage algorithm={'selectionSort'} />}
 					></Route>
 				</Routes>
